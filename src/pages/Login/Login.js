@@ -1,28 +1,19 @@
 import React from "react";
 import { Header } from "../../components";
+import { Button } from "../../components/Button/StyledComponents";
 
-class Login extends React.Component {
-  render() {
-    return (
-      <div>
-        {this.props.loggedIn && <Header />}
+const Login = ({ loggedIn, user, changed, clicked }) => {
+  return (
+    <div>
+      {loggedIn && <Header />}
 
-        {!this.props.loggedIn && <div className="page">Login Form</div>}
+      {!loggedIn && <div className="page">Login Form</div>}
 
-        {!this.props.loggedIn && (
-          <input
-            type="text"
-            value={this.props.user}
-            onChange={this.props.changed}
-          />
-        )}
+      {!loggedIn && <input type="text" value={user} onChange={changed} />}
 
-        {!this.props.loggedIn && (
-          <button onClick={this.props.clicked}>Login Now!</button>
-        )}
-      </div>
-    );
-  }
-}
+      {!loggedIn && <Button onClick={clicked}>Login Now!</Button>}
+    </div>
+  );
+};
 
 export default Login;
